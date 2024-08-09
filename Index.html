@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        /* Basic Reset */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background-color: #f0d41f;
+            color: #f01f2d;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, padding 0.3s;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: #1f7df0;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #1fb1f0;
+        }
+
+        section {
+            padding: 60px 20px;
+            margin-top: 60px; /* To ensure content is not hidden under the fixed header */
+            transition: background-color 0.3s;
+        }
+
+        section:nth-of-type(1) {
+            background-color:#34eb4c ;
+        }
+
+        section:nth-of-type(2) {
+            background-color: #eba434;
+        }
+
+        section:nth-of-type(3) {
+            background-color: #eb34eb;
+        }
+
+        section:nth-of-type(4) {
+            background-color: #3440eb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Home Section</h1>
+            <p>Hello Everyone, I am Diwakaran R.</p>
+        </section>
+        <section id="about">
+            <h1>About Section</h1>
+            <p>I am from Chennai. I am currently pursuing my bachelor's degree at Peri College of Arts and Science.</p>
+        </section>
+        <section id="skills">
+            <h1>Skills Section</h1>
+            <p>Python at CISCO</p>
+            <p>Java at EDUREKA</p>
+            <p>Web development basics at IBM Skills Build</p>
+        </section>
+        <section id="contact">
+            <h1>Contact Section</h1>
+            <p>Contact me via email at karandiwa133@gmail.com</p>
+        </section>
+    </main>
+    <script>
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top + window.scrollY < scrollPosition && rect.bottom + window.scrollY > scrollPosition) {
+                    section.style.backgroundColor = ['#3467eb', '#eb347d', '#34ebbd', '#a8eb34'][index];
+                } else {
+                    section.style.backgroundColor = ['green', 'yellow', '#148fe0', '#6214e0'][index];
+                }
+            });
+
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = '#f01fb5'; // Darker background color when scrolled
+                navbar.style.padding = '5px 20px'; // Adjust padding
+            } else {
+                navbar.style.backgroundColor = '#f0d41f'; // Original background color
+                navbar.style.padding = '10px 20px'; // Original padding
+            }
+        });
+    </script>
+</body>
+</html>
